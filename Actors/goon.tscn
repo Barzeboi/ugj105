@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://b78s5ein1vnwv"]
+
+[ext_resource type="Script" path="res://Scripts/goon.gd" id="1_axgp6"]
+[ext_resource type="Texture2D" uid="uid://bf6yalp6a24bv" path="res://Assets/game_stuff/Characters/Goon.png" id="1_kvjew"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bm32w"]
+size = Vector2(26, 27)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vetv5"]
+radius = 22.2036
+
+[sub_resource type="Animation" id="Animation_umiqx"]
+resource_name = "hurt"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.858824, 0.317647, 0, 1), Color(1, 1, 1, 1), Color(0.858824, 0.317647, 0, 1), Color(1, 1, 1, 1), Color(0.858824, 0.317647, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ck01a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_njss7"]
+_data = {
+"RESET": SubResource("Animation_ck01a"),
+"hurt": SubResource("Animation_umiqx")
+}
+
+[node name="Goon" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 41
+script = ExtResource("1_axgp6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_bm32w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_kvjew")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 40
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_vetv5")
+debug_color = Color(0.960836, 0.199483, 0, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_njss7")
+}
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://di58wjwdiylyv"]
+[gd_scene load_steps=7 format=3 uid="uid://di58wjwdiylyv"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_jrk3p"]
-[ext_resource type="Texture2D" uid="uid://dwmxtke02mwy1" path="res://Assets/test_stuff/player_placeholder.png" id="1_rcfyh"]
+[ext_resource type="Texture2D" uid="uid://cvaaytx06sug1" path="res://Assets/game_stuff/Characters/SpyGuy.png" id="2_8ynbw"]
 [ext_resource type="Script" path="res://Scripts/marker_2d.gd" id="3_82x1h"]
 [ext_resource type="Texture2D" uid="uid://bsslesmd7qt21" path="res://Assets/game_stuff/Pistols.png" id="3_lkfno"]
+[ext_resource type="Texture2D" uid="uid://b3ns53sxq3ndo" path="res://Assets/game_stuff/Characters/SpyGuyHand.png" id="5_fuxps"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dn86"]
-size = Vector2(18, 18)
+size = Vector2(26, 32)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_jrk3p")
@@ -15,19 +16,25 @@ script = ExtResource("1_jrk3p")
 shape = SubResource("RectangleShape2D_3dn86")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 scale = Vector2(2, 2)
-texture = ExtResource("1_rcfyh")
+texture = ExtResource("2_8ynbw")
+hframes = 3
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(15, 0)
+position = Vector2(20, 0)
 script = ExtResource("3_82x1h")
 
 [node name="Gun" type="Sprite2D" parent="Marker2D"]
 texture_filter = 1
-scale = Vector2(0.75, 0.75)
+scale = Vector2(1.25, 1.25)
 texture = ExtResource("3_lkfno")
-offset = Vector2(8, 0)
+offset = Vector2(8, -4)
 hframes = 7
 
 [node name="Marker2D" type="Marker2D" parent="Marker2D/Gun"]
-position = Vector2(23, 0)
+position = Vector2(23, -4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+texture_filter = 1
+texture = ExtResource("5_fuxps")

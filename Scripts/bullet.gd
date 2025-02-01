@@ -1,6 +1,7 @@
 extends Area2D
 
 var speed: float = 1700
+var damage: int = 50
 
 func _physics_process(delta: float) -> void:
 	position += transform.x * speed * delta
