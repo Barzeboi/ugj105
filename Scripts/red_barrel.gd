@@ -1,9 +1,20 @@
 extends Area2D
 
+signal exploded
 
+func _ready() -> void:
+	pass
 
-func _on_area_entered(area: Area2D) -> void:
+func _explode():
 	$AnimatedSprite2D.play("default")
+	$Explosion/CollisionShape2D.set_deferred("disabled", false)
 	
-	await get_tree().create_timer(1.0).timeout
+func _on_area_entered(area: Area2D) -> void:
+	_explode()
+	
+	await get_tree().create_timer(0.99).timeout
 	queue_free()
+
+
+func _on_explosion_area_entered(area: Area2D) -> void:
+	area._explode()

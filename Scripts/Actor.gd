@@ -2,4 +2,4 @@ extends CharacterBody2D
 
 class_name Actor
 
-var speed = 90
+var speed: float = 90

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d0cdgjy8yaclu"]
+[gd_scene load_steps=18 format=3 uid="uid://d0cdgjy8yaclu"]
 
 [ext_resource type="Texture2D" uid="uid://0bffkc1boe4t" path="res://Assets/The Barrel/exploding_barrel.png" id="1_ryjrt"]
 [ext_resource type="Script" path="res://Scripts/red_barrel.gd" id="1_yfnm0"]
@@ -94,10 +94,15 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_g5w1j"]
+radius = 41.3038
+
 [node name="red_barrel" type="Area2D"]
+collision_layer = 4
+collision_mask = 40
 script = ExtResource("1_yfnm0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -107,5 +112,14 @@ shape = SubResource("CapsuleShape2D_gyty4")
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_vhghh")
 offset = Vector2(0, -20)
+
+[node name="Explosion" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 21
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Explosion"]
+shape = SubResource("CircleShape2D_g5w1j")
+disabled = true
+debug_color = Color(0.985853, 0.116601, 7.70092e-07, 0.42)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
