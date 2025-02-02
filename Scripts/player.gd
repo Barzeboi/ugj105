@@ -1,8 +1,7 @@
 extends Actor
 
 @onready var bullet = preload("res://Misc/Others/bullet.tscn")
-var bullet_count: int = 2
-
+var bullets_left: int = 2
 
 func get_input():
 	var input_direction = Input.get_vector("move_left","move_right","move_up","move_down")

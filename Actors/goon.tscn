@@ -9,6 +9,21 @@ size = Vector2(26, 27)
 [sub_resource type="CircleShape2D" id="CircleShape2D_vetv5"]
 radius = 22.2036
 
+[sub_resource type="Animation" id="Animation_ck01a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_umiqx"]
 resource_name = "hurt"
 length = 0.6
@@ -24,21 +39,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.858824, 0.317647, 0, 1), Color(1, 1, 1, 1), Color(0.858824, 0.317647, 0, 1), Color(1, 1, 1, 1), Color(0.858824, 0.317647, 0, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_ck01a"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_njss7"]
@@ -60,6 +60,7 @@ shape = SubResource("RectangleShape2D_bm32w")
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("1_kvjew")
+hframes = 3
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 16

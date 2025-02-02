@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/red_barrel.gd" id="1_yfnm0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gyty4"]
+height = 28.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ookqm"]
 atlas = ExtResource("1_ryjrt")
@@ -111,7 +112,7 @@ shape = SubResource("CapsuleShape2D_gyty4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_vhghh")
-offset = Vector2(0, -20)
+offset = Vector2(0, -25)
 
 [node name="Explosion" type="Area2D" parent="."]
 collision_layer = 8
