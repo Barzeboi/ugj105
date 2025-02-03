@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func _explode():
 	$AnimatedSprite2D.play("default")
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.05).timeout
 	$Explosion/CollisionShape2D.set_deferred("disabled", false)
 	
 func _on_area_entered(area: Area2D) -> void:

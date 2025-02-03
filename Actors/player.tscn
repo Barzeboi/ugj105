@@ -34,7 +34,7 @@ offset = Vector2(8, -4)
 hframes = 7
 
 [node name="Marker2D" type="Marker2D" parent="Marker2D/Gun"]
-position = Vector2(23, -4)
+position = Vector2(23, -5)
 
 [node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
 texture_filter = 1
