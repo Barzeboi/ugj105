@@ -12,7 +12,7 @@ var patrol_points = []
 enum states {
 	IDLE,
 	PATROLLING,
-	SUSPICIOUS,
+	INVESTIGATE,
 	ENEMY_SPOTTED,
 	DEAD
 }
