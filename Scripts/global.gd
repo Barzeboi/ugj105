@@ -1,13 +1,13 @@
 extends Node
 
-var enemies
+var enemies: int
 var level_completed: bool
 
 @onready var player: CharacterBody2D = get_node("/root/TestLevel/Player")
 
 
 func _process(delta: float) -> void:
-	enemies = get_tree().get_nodes_in_group("Enemies")
+	enemies = get_tree().get_nodes_in_group("Enemies").size()
 
 	if player.bullets_left == 0 and enemies > 0:
 		level_completed = false

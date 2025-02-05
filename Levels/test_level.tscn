@@ -27,10 +27,11 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 34
 sources/1 = SubResource("TileSetAtlasSource_ygxxb")
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_e6hbl"]
-vertices = PackedVector2Array(987.852, 47.0469, 653.078, 45.3828, 973.398, 23.9922, 1101.74, 23.0703, 1088.99, 533.102, 995.148, 538.773, 1092.54, 612.102, 384.641, 619, 367.102, 553.227, 268.578, 626.313, 298.492, 64, 362.102, 64)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(4, 6, 7, 5), PackedInt32Array(8, 5, 7, 9), PackedInt32Array(8, 9, 10, 11)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(289, 54, 372, 54, 377, 543, 985, 529, 978, 57, 374, 54, 973, 14, 1112, 13, 1099, 533, 1103, 622, 385, 629, 258, 637)])
+[sub_resource type="Curve2D" id="Curve2D_kboyl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 320, 53, 0, 0, 0, 0, 332, 585, 0, 0, 0, 0, 1021, 579, 0, 0, 0, 0, 1016, 58, 0, 0, 0, 0, 321, 53)
+}
+point_count = 5
 
 [node name="TestLevel" type="Node2D"]
 
@@ -47,47 +48,50 @@ tile_set = SubResource("TileSet_to5ew")
 [node name="Player" parent="." instance=ExtResource("2_phgtk")]
 position = Vector2(119, 217)
 
-[node name="Goon" parent="." instance=ExtResource("4_bpbaq")]
-position = Vector2(330, 287)
+[node name="Goon" parent="." node_paths=PackedStringArray("patrol_path") instance=ExtResource("4_bpbaq")]
+position = Vector2(323, 53)
+patrol_path = NodePath("../Path2D")
 
-[node name="red_barrel" parent="." instance=ExtResource("3_ncpd0")]
+[node name="BarrelHolder" type="Node2D" parent="."]
+
+[node name="red_barrel" parent="BarrelHolder" instance=ExtResource("3_ncpd0")]
 position = Vector2(543, 235)
 
-[node name="red_barrel2" parent="." instance=ExtResource("3_ncpd0")]
+[node name="red_barrel2" parent="BarrelHolder" instance=ExtResource("3_ncpd0")]
 position = Vector2(573, 235)
 
-[node name="red_barrel3" parent="." instance=ExtResource("3_ncpd0")]
+[node name="red_barrel3" parent="BarrelHolder" instance=ExtResource("3_ncpd0")]
 position = Vector2(599, 236)
 
-[node name="red_barrel4" parent="." instance=ExtResource("3_ncpd0")]
+[node name="red_barrel4" parent="BarrelHolder" instance=ExtResource("3_ncpd0")]
 position = Vector2(628, 236)
 
-[node name="red_barrel5" parent="." instance=ExtResource("3_ncpd0")]
+[node name="red_barrel5" parent="BarrelHolder" instance=ExtResource("3_ncpd0")]
 position = Vector2(658, 238)
 
-[node name="red_barrel6" parent="." instance=ExtResource("3_ncpd0")]
+[node name="red_barrel6" parent="BarrelHolder" instance=ExtResource("3_ncpd0")]
 position = Vector2(674, 259)
 
-[node name="red_barrel7" parent="." instance=ExtResource("3_ncpd0")]
+[node name="red_barrel7" parent="BarrelHolder" instance=ExtResource("3_ncpd0")]
 position = Vector2(670, 286)
 
-[node name="red_barrel8" parent="." instance=ExtResource("3_ncpd0")]
+[node name="red_barrel8" parent="BarrelHolder" instance=ExtResource("3_ncpd0")]
 position = Vector2(660, 309)
 
-[node name="red_barrel9" parent="." instance=ExtResource("3_ncpd0")]
+[node name="red_barrel9" parent="BarrelHolder" instance=ExtResource("3_ncpd0")]
 position = Vector2(640, 326)
 
-[node name="red_barrel10" parent="." instance=ExtResource("3_ncpd0")]
+[node name="red_barrel10" parent="BarrelHolder" instance=ExtResource("3_ncpd0")]
 position = Vector2(616, 339)
 
-[node name="red_barrel11" parent="." instance=ExtResource("3_ncpd0")]
+[node name="red_barrel11" parent="BarrelHolder" instance=ExtResource("3_ncpd0")]
 position = Vector2(590, 350)
 
-[node name="red_barrel12" parent="." instance=ExtResource("3_ncpd0")]
+[node name="red_barrel12" parent="BarrelHolder" instance=ExtResource("3_ncpd0")]
 position = Vector2(566, 357)
 
-[node name="red_barrel13" parent="." instance=ExtResource("3_ncpd0")]
+[node name="red_barrel13" parent="BarrelHolder" instance=ExtResource("3_ncpd0")]
 position = Vector2(536, 349)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_e6hbl")
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_kboyl")
