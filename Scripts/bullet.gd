@@ -11,4 +11,5 @@ func _on_area_entered(area: Area2D) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	queue_free()
+	speed = 0
+	$Sprite2D.hide()

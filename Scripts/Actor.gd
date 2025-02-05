@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Actor
 
-var speed: float = 90
+var speed: float = 120
 var patrol_position = 120
 var target = null
 var player = null
