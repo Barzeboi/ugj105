@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://ds8sl20dxmxpy"]
+[gd_scene load_steps=12 format=4 uid="uid://ds8sl20dxmxpy"]
 
 [ext_resource type="Texture2D" uid="uid://n3t6nxt83fqi" path="res://Assets/test_stuff/world_placeholder.png" id="1_6lkta"]
 [ext_resource type="Texture2D" uid="uid://c4cv6hk1qry86" path="res://Assets/test_stuff/wall_placeholder.png" id="1_karjb"]
@@ -32,6 +32,11 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 320, 53, 0, 0, 0, 0, 332, 585, 0, 0, 0, 0, 1021, 579, 0, 0, 0, 0, 1016, 58, 0, 0, 0, 0, 321, 53)
 }
 point_count = 5
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_dr7tt"]
+vertices = PackedVector2Array(285.898, 32.9688, 1060.91, 31.0234, 924.047, 93.0234, 414, 91.9766, 1056.08, 610, 921.953, 505.977, 280.102, 610, 413, 507.023, 413, 381, 414, 323, 451, 381, 450, 323, 450, 132, 885, 132, 885, 469, 451, 469)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 1, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(7, 6, 0, 8), PackedInt32Array(8, 0, 3, 9), PackedInt32Array(10, 8, 9, 11), PackedInt32Array(11, 12, 13, 14, 10), PackedInt32Array(10, 14, 15)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(276, 23, 270, 620, 1066, 620, 1071, 21), PackedVector2Array(914, 103, 912, 496, 423, 497, 423, 391, 441, 391, 441, 479, 895, 479, 895, 122, 440, 122, 440, 313, 424, 313, 424, 102)])
 
 [node name="TestLevel" type="Node2D"]
 
@@ -95,3 +100,6 @@ position = Vector2(536, 349)
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_kboyl")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_dr7tt")

@@ -1,5 +1,7 @@
 extends Area2D
 
+signal noise
+
 var speed: float = 1200
 var damage: int = 50
 

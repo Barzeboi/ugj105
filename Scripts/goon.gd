@@ -3,6 +3,7 @@ extends Actor
 var health: float = 50
 @export var patrol_path: Path2D
 @export var state = states.PATROLLING
+var bullet = preload("res://Misc/Others/bullet.tscn")
 
 func _ready() -> void:
 	add_to_group("Enemies")
@@ -14,12 +15,12 @@ func _physics_process(delta: float) -> void:
 	if target:
 		if target.x > position.x:
 			pass
-		if state != states.ENEMY_SPOTTED:
-			velocity = position.direction_to(target) * speed
+		
 	
 	move_and_slide()
 
 func _process(delta: float) -> void:
+
 	_actions()
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
@@ -45,3 +46,7 @@ func _actions():
 			pass
 		states.DEAD:
 			speed = 0
+
+
+func _on_ears_area_entered(area: Area2D) -> void:
+	target = area

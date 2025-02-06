@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b78s5ein1vnwv"]
+[gd_scene load_steps=9 format=3 uid="uid://b78s5ein1vnwv"]
 
 [ext_resource type="Script" path="res://Scripts/goon.gd" id="1_axgp6"]
 [ext_resource type="Texture2D" uid="uid://bf6yalp6a24bv" path="res://Assets/game_stuff/Characters/Goon.png" id="1_kvjew"]
@@ -48,6 +48,9 @@ _data = {
 "hurt": SubResource("Animation_umiqx")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_mtul2"]
+radius = 155.0
+
 [node name="Goon" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 41
@@ -78,4 +81,13 @@ libraries = {
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
+[node name="Ears" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ears"]
+shape = SubResource("CircleShape2D_mtul2")
+debug_color = Color(0.454885, 0.437934, 0.0704796, 0.42)
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_entered" from="Ears" to="." method="_on_ears_area_entered"]
