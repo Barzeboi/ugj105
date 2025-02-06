@@ -4,6 +4,7 @@ var health: float = 50
 @export var patrol_path: Path2D
 @export var state = states.PATROLLING
 var bullet = preload("res://Misc/Others/bullet.tscn")
+@onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
 func _ready() -> void:
 	add_to_group("Enemies")
@@ -15,12 +16,16 @@ func _physics_process(delta: float) -> void:
 	if target:
 		if target.x > position.x:
 			pass
+		if state != states.ENEMY_SPOTTED || state != states.DEAD:
+			velocity = position.direction_to(target) * speed
 		
 	
 	move_and_slide()
 
 func _process(delta: float) -> void:
-
+	if target:
+		if state == states.INVESTIGATE:
+			navigation_agent_2d.target_position = target.global_position
 	_actions()
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
@@ -41,7 +46,7 @@ func _actions():
 			if position.distance_to(target) < 5:
 				current_patrol_point = wrapi(current_patrol_point + 1, 0, patrol_points.size())
 		states.INVESTIGATE:
-			pass
+			velocity = navigation_agent_2d.get_next_path_position() - global_position
 		states.ENEMY_SPOTTED:
 			pass
 		states.DEAD:
@@ -50,3 +55,4 @@ func _actions():
 
 func _on_ears_area_entered(area: Area2D) -> void:
 	target = area
+	state = states.INVESTIGATE

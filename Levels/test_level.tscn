@@ -57,6 +57,10 @@ position = Vector2(119, 217)
 position = Vector2(323, 53)
 patrol_path = NodePath("../Path2D")
 
+[node name="Goon2" parent="." node_paths=PackedStringArray("patrol_path") instance=ExtResource("4_bpbaq")]
+position = Vector2(604, 288)
+patrol_path = NodePath("../Path2D")
+
 [node name="BarrelHolder" type="Node2D" parent="."]
 
 [node name="red_barrel" parent="BarrelHolder" instance=ExtResource("3_ncpd0")]
@@ -100,6 +104,8 @@ position = Vector2(536, 349)
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_kboyl")
+metadata/_edit_lock_ = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_dr7tt")
+metadata/_edit_lock_ = true
