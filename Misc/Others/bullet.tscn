@@ -6,8 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wjkjg"]
 size = Vector2(14, 12)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yuiln"]
-radius = 36.4005
+[sub_resource type="CircleShape2D" id="CircleShape2D_d5dj8"]
+radius = 15.0
 
 [node name="Bullet" type="Area2D"]
 scale = Vector2(0.2, 0.2)
@@ -28,8 +28,9 @@ collision_layer = 128
 collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BulletSound"]
-shape = SubResource("CircleShape2D_yuiln")
+shape = SubResource("CircleShape2D_d5dj8")
 disabled = true
+debug_color = Color(0, 0.633976, 0.434363, 0.42)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

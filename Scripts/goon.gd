@@ -13,19 +13,23 @@ func _ready() -> void:
 		
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
+	
 	if target:
-		if target.x > position.x:
-			pass
-		if state != states.ENEMY_SPOTTED || state != states.DEAD:
+		#if target.x > position.x:
+			#pass
+		if (target.x - position.x) > (target.y - position.y):
+			velocity.y = 0
+		elif (target.x - position.x) < (target.y - position.y):
+			velocity.x = 0
+		if state == states.PATROLLING:
 			velocity = position.direction_to(target) * speed
+		elif state == states.INVESTIGATE:
+			velocity = navigation_agent_2d.get_next_path_position() - global_position
 		
 	
 	move_and_slide()
 
 func _process(delta: float) -> void:
-	if target:
-		if state == states.INVESTIGATE:
-			navigation_agent_2d.target_position = target.global_position
 	_actions()
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
@@ -46,7 +50,7 @@ func _actions():
 			if position.distance_to(target) < 5:
 				current_patrol_point = wrapi(current_patrol_point + 1, 0, patrol_points.size())
 		states.INVESTIGATE:
-			velocity = navigation_agent_2d.get_next_path_position() - global_position
+			navigation_agent_2d.target_position = target
 		states.ENEMY_SPOTTED:
 			pass
 		states.DEAD:
@@ -54,5 +58,5 @@ func _actions():
 
 
 func _on_ears_area_entered(area: Area2D) -> void:
-	target = area
+	target = area.owner.global_position
 	state = states.INVESTIGATE

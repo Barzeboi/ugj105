@@ -68,6 +68,11 @@ shoot={
 2d_physics/layer_7="Patrol Check"
 2d_physics/layer_8="Bullet Sound"
 2d_physics/layer_9="Ears"
+2d_physics/layer_10="Sight"
+
+[navigation]
+
+2d/default_cell_size=4.0
 
 [rendering]
 

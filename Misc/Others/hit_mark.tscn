@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c52hky2r4evfo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d1sc7"]
+
+[node name="HitMark" type="Marker2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="sound" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sound"]
+shape = SubResource("CircleShape2D_d1sc7")

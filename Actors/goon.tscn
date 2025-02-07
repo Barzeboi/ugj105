@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b78s5ein1vnwv"]
+[gd_scene load_steps=10 format=3 uid="uid://b78s5ein1vnwv"]
 
 [ext_resource type="Script" path="res://Scripts/goon.gd" id="1_axgp6"]
 [ext_resource type="Texture2D" uid="uid://bf6yalp6a24bv" path="res://Assets/game_stuff/Characters/Goon.png" id="1_kvjew"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bm32w"]
-size = Vector2(26, 27)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ielne"]
+radius = 16.0078
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vetv5"]
 radius = 22.2036
@@ -48,8 +48,11 @@ _data = {
 "hurt": SubResource("Animation_umiqx")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_lff8v"]
+radius = 50.3587
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_mtul2"]
-radius = 155.0
+radius = 201.062
 
 [node name="Goon" type="CharacterBody2D"]
 collision_layer = 16
@@ -58,7 +61,7 @@ script = ExtResource("1_axgp6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.5)
-shape = SubResource("RectangleShape2D_bm32w")
+shape = SubResource("CircleShape2D_ielne")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -80,6 +83,16 @@ libraries = {
 }
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 15.0
+debug_enabled = true
+
+[node name="Stop" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stop"]
+shape = SubResource("CircleShape2D_lff8v")
+debug_color = Color(0.862201, 0.000636481, 0.870161, 0.42)
 
 [node name="Ears" type="Area2D" parent="."]
 collision_layer = 256
@@ -88,6 +101,15 @@ collision_mask = 128
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ears"]
 shape = SubResource("CircleShape2D_mtul2")
 debug_color = Color(0.454885, 0.437934, 0.0704796, 0.42)
+
+[node name="Sight" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 32
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sight"]
+position = Vector2(0, 0.790339)
+scale = Vector2(1, 1.35393)
+polygon = PackedVector2Array(0, -7.09258, -12, 82, 8, 82)
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="Ears" to="." method="_on_ears_area_entered"]
