@@ -112,5 +112,6 @@ curve = SubResource("Curve2D_kboyl")
 metadata/_edit_lock_ = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_dr7tt")
 metadata/_edit_lock_ = true

@@ -5,6 +5,7 @@ signal noise
 var speed: float = 1200
 var damage: int = 50
 @onready var hit_mark = preload("res://Misc/Others/hit_mark.tscn")
+var original_position
 
 func _physics_process(delta: float) -> void:
 	position += transform.x * speed * delta

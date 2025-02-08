@@ -16,6 +16,9 @@ func _process(delta: float) -> void:
 		_shoot()
 	
 func _shoot():
-	var b = bullet.instantiate()
-	owner.add_child(b)
-	b.transform = $Marker2D/Gun/Marker2D.global_transform
+	if bullets_left > 0:
+		var b = bullet.instantiate()
+		owner.add_child(b)
+		b.transform = $Marker2D/Gun/Marker2D.global_transform
+		b.original_position = $Marker2D/Gun/Marker2D.global_position
+		bullets_left -= 1

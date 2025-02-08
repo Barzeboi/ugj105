@@ -52,7 +52,7 @@ _data = {
 radius = 50.3587
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mtul2"]
-radius = 201.062
+radius = 142.0
 
 [node name="Goon" type="CharacterBody2D"]
 collision_layer = 16
@@ -83,12 +83,11 @@ libraries = {
 }
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-target_desired_distance = 15.0
 debug_enabled = true
 
 [node name="Stop" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 32
+collision_layer = 0
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stop"]
 shape = SubResource("CircleShape2D_lff8v")
@@ -112,4 +111,6 @@ scale = Vector2(1, 1.35393)
 polygon = PackedVector2Array(0, -7.09258, -12, 82, 8, 82)
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_entered" from="Stop" to="." method="_on_stop_area_entered"]
 [connection signal="area_entered" from="Ears" to="." method="_on_ears_area_entered"]
+[connection signal="area_entered" from="Sight" to="." method="_on_sight_area_entered"]

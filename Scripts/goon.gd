@@ -5,6 +5,8 @@ var health: float = 50
 @export var state = states.PATROLLING
 var bullet = preload("res://Misc/Others/bullet.tscn")
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
+@onready var player: CharacterBody2D = $"../Player"
+
 
 func _ready() -> void:
 	add_to_group("Enemies")
@@ -60,3 +62,15 @@ func _actions():
 func _on_ears_area_entered(area: Area2D) -> void:
 	target = area.owner.global_position
 	state = states.INVESTIGATE
+
+
+func _on_sight_area_entered(area: Area2D) -> void:
+	if (area.original_position.x - global_position.x) < 50 && (area.original_position.y - global_position.y) > 20:
+		target = area.original_position
+		state = states.INVESTIGATE
+	else:
+		state = state
+
+
+func _on_stop_area_entered(area: Area2D) -> void:
+	speed = 0
