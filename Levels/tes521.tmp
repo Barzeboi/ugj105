@@ -29,7 +29,7 @@ sources/1 = SubResource("TileSetAtlasSource_ygxxb")
 
 [sub_resource type="Curve2D" id="Curve2D_kboyl"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 320, 53, 0, 0, 0, 0, 320, 586, 0, 0, 0, 0, 1021, 586, 0, 0, 0, 0, 1021, 53, 0, 0, 0, 0, 321, 53)
+"points": PackedVector2Array(0, 0, 0, 0, 320, 53, 0, 0, 0, 0, 332, 585, 0, 0, 0, 0, 1021, 579, 0, 0, 0, 0, 1016, 58, 0, 0, 0, 0, 321, 53)
 }
 point_count = 5
 

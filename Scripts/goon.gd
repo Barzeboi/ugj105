@@ -6,6 +6,7 @@ var health: float = 50
 var bullet = preload("res://Misc/Others/bullet.tscn")
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var player: CharacterBody2D = $"../Player"
+@onready var anim: AnimationPlayer = $AnimationPlayer
 
 
 func _ready() -> void:
@@ -17,8 +18,14 @@ func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
 	
 	if target:
-		#if target.x > position.x:
-			#pass
+		if (target.x > position.x) && (target.y - position.y):
+			anim.play("move_right")
+		elif (target.x < position.x) > (target.y - position.y):
+			anim.play("move_left")
+		elif (target.y > position.y) > (target.x - position.x):
+			anim.play("move_down")
+		elif (target.y < position.y) > (target.y - position.y):
+			anim.play("move_up")
 		if (target.x - position.x) > (target.y - position.y):
 			velocity.y = 0
 		elif (target.x - position.x) < (target.y - position.y):
