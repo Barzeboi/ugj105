@@ -19,3 +19,5 @@ func _on_body_entered(body: Node2D) -> void:
 	$Sprite2D.hide()
 	$CollisionShape2D.set_deferred("disabled", true)
 	$BulletSound/CollisionShape2D.set_deferred("disabled", false)
+	await get_tree().create_timer(0.1).timeout
+	$BulletSound/CollisionShape2D.set_deferred("disabled", true)

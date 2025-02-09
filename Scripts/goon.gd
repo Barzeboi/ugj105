@@ -18,13 +18,13 @@ func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
 	
 	if target:
-		if (target.x > position.x) && (target.y - position.y):
+		if (target.x > position.x):
 			anim.play("move_right")
-		elif (target.x < position.x) > (target.y - position.y):
+		elif (target.x < position.x):
 			anim.play("move_left")
-		elif (target.y > position.y) > (target.x - position.x):
+		elif (target.y > position.y):
 			anim.play("move_down")
-		elif (target.y < position.y) > (target.y - position.y):
+		elif (target.y < position.y):
 			anim.play("move_up")
 		if (target.x - position.x) > (target.y - position.y):
 			velocity.y = 0
@@ -65,7 +65,6 @@ func _actions():
 		states.DEAD:
 			speed = 0
 
-
 func _on_ears_area_entered(area: Area2D) -> void:
 	target = area.owner.global_position
 	state = states.INVESTIGATE
@@ -76,8 +75,8 @@ func _on_sight_area_entered(area: Area2D) -> void:
 		target = area.original_position
 		state = states.INVESTIGATE
 	else:
-		state = state
-
-
+		get_tree().create_timer(0.2).timout
+		target = area.global_position
+		state = states.INVESTIGATE
 func _on_stop_area_entered(area: Area2D) -> void:
 	speed = 0
